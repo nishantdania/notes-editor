@@ -199,7 +199,7 @@ func main() {
 							};
 							
 							xhr.send('content=' + encodeURIComponent(textarea.value));
-						}, 5000); // Save after 5 seconds of edits
+						}, 250); // Save after 250 milisecond of edits
 						
 						// Add event listener for typing
 						textarea.addEventListener('input', function() {
@@ -244,7 +244,7 @@ func main() {
 					<textarea name="content">` + string(content) + `</textarea>
 					<p>
 						<button>Save</button>
-						<small>(Autosaves after 5 seconds of edits)</small>
+						<small>(Autosaves after 250 seconds of edits)</small>
 					</p>
 					<p>Editing: ` + notesFile + ` <span id="saveStatus">Last saved: ` + lastModTime + `</span></p>
 					<p><small>` + strconv.Itoa(backupCount) + ` backups available in ` + backupDir + ` (keeping the last hour of changes)</small></p>
