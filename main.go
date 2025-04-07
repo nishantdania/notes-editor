@@ -107,11 +107,9 @@ func main() {
 		
 		// Get list of backup files for dropdown
 		backupFiles := []string{}
-		backupCount := 0
 		if _, err := os.Stat(backupDir); !os.IsNotExist(err) {
 			files, err := ioutil.ReadDir(backupDir)
 			if err == nil {
-				backupCount = len(files)
 				// Reverse the files to show newest first
 				for i := len(files) - 1; i >= 0; i-- {
 					if !files[i].IsDir() && strings.HasSuffix(files[i].Name(), ".bak") {
@@ -227,10 +225,12 @@ func main() {
 					});
 				</script>
 				<style>
+					body {
+						font-size: 14px;
+					}
 					#saveStatus {
 						color: #666;
 						font-style: italic;
-						margin-left: 10px;
 					}
 					textarea {
 						width: 100%;
@@ -247,8 +247,7 @@ func main() {
 						<button>Save</button>
 						<small>(Autosaves after 250 seconds of edits)</small>
 					</p>
-					<p>Editing: ` + notesFile + ` <span id="saveStatus">Last saved: ` + lastModTime + `</span></p>
-					<p><small>` + strconv.Itoa(backupCount) + ` backups available in ` + backupDir + ` (keeping the last hour of changes)</small></p>
+					<p><span id="saveStatus">Last saved: ` + lastModTime + `</p>
 				</form>
 				` + backupDropdown + `
 			</body>
