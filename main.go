@@ -235,6 +235,7 @@ func main() {
 						width: 100%;
 						height: 50vh;
 						font-family: monospace;
+						font-size: 16px;
 					}
 				</style>
 			</head>
